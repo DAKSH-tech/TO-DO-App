@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/index.css" >
+    </head>
+    <body>
+        <!-- For Head part -->
+        <div id="head"
+                <h1>To Do App</h1>
+        </div>
+        <!-- FOR Content Part -->
+            <div id="content">
+                <!-- Form tag -->
+                <form action="/create-detail" method="POST">
+                    <!-- Differnt-2 Fields -->
+                    <div class="horizontal">
+                        <label>DESCRIPTION</label>
+                        <input type="text" name="DESCRIPTION" placeholder="What are going to do" required></input>    
+                        <label>Category </label>
+                        <input list="Work" id="category" name="category" placeholder="Choose a Category"">
+                            <datalist id="Work">
+                            <option value="Personal">
+                            <option value="Work">
+                            <option value="School">
+                            <option value="Cleaning">
+                            <option value="Others">
+                            </datalist>
+                        <label>Date </label>
+                        <input type="date" id="date" name="date" value="2018-07-22" min="2018-01-01" max="2018-12-31" >
+                    </div>
+                    <!-- Submit Button     -->
+                    <button type="submit">Add to list</button>
+                </form>    
+            <!-- For displaying content   -->
+            <div id="display">
+                <ul>
+                <% for (let i of DETAIL){ %>
+                    <div id="document">
+                        <p id="des"><%= i.DESCRIPTION %></p> 
+                        <p id="cat"><%= i.category %></p><br>
+                        <p id="dat"><%= i.date.toLocaleString() %></p>
+                        <a href="/delete-detail/?id=<%= i._id %>">
+                        <span>Delete</span>
+                        </a>
+                    </div>
+                <% } %>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
